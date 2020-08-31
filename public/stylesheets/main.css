@@ -1,0 +1,78 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+.test1 {
+  background: url('http://p0.meituan.net/scarlett/9708149a8079688544306e3465d50d8d81867.png') no-repeat;
+  background-size: 190px auto;
+  background-repeat: no-repeat;
+  height: 18px;
+  width: 88px;
+  display: inline-block;
+}
+.star-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+.test2 {
+  background-position: 0 -431px;
+}
+.mid-score {
+  color: #EA120E;
+  margin-left: 6px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.brief-info {
+  display: flex;
+  margin-top: 6px;
+  font-size: 14px;
+}
+.icon {
+  width: 16px;
+  height: 16px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAjVBMVEUAAAD/8DizOFAAAALnRSTlMAifn9SvQH7NmrfkMwHwvLuZFmWBT24NLGuF1OPjQZEAPxwbSke268m5qLclM6+4uWvAAAAM1JREFUOMu10dkOgjAQheFhabGgoiKKC4r7ft7/8SwlcYlDiSaeq0m+/27oX+tuVydp8wOAjaz3NcJI6MLiRHOBieQ9K70qCsaXGUTbXBEwYzyGcgNThPByzh3yTbED9h8+HGsnU1jcFALegPdqivNF6+FOs0+/9s6bJ58+enG3ya+cq6czD3AA17c4xd5RF5X7jA+9jPqatKec0xQhlYVCGhG3LW5UFhC8U7AqSEZnV8x5zxFfJila/TbxS4BADTpUO5nkBf2+HqzrNQZ3lu0fMOGbbw4AAAAASUVORK5CYII=) no-repeat
+}
+.item {
+  width: 91px;
+  margin: 0 29px 15px 0;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 

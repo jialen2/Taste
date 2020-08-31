@@ -1,0 +1,41 @@
+<%- include ("../partials/header") -%>
+    <div style="background-color: #f6f6f6; height: 100%; width: 100%">
+        <div style="width: 1190px; margin: auto; border-style: solid; font-size: 14px">
+            <div style="padding: 18px 20px 50px; width: 870px; background-color: white">
+                <h1 style="font-weight: 700"><%=taste.name%></h1>
+                <div class="brief-info">
+                     <div class="star-wrapper">
+                        <div class="test1 test2"></div>
+                        <div class="mid-score"><%=taste.rate%></div>
+                    </div>
+                    <span style="margin: 0 0 0 10px; color: #666"><%=taste.rateNumber%> 条评论</span>
+                    <span style="margin: 0 0 0 10px; color: #666">人均: <%=taste.price%></span>
+                </div>
+                <div style="margin-top: 7px; color: #666">地址： <%=taste.location%></div>
+                <div style="margin-top: 7px; color: #666">电话: <%=taste.telephone%></div>
+                <div style="display: inline; color: #666;" class="pull-right">
+                    <div style="font-size: 16px">Best Restaurant I ever have</div>
+                    <div style="font-size: 12px" class="pull-right"><i> ---Jimmy Wang</i></div>
+                </div>
+                <div style="margin-top: 7px">
+                    <a class="btn btn-success" href="/taste/<%= taste._id %>/comments/new">Add New Comment</a>
+                </div>
+                <% if (currentUser && taste.author.id.equals(currentUser._id)){ %>
+                     <a class="btn btn-success" style="display: inline" href="/taste/<%= taste._id %>/menu/new">Add New Dishes</a>
+                <% } %>            
+            </div>
+            <div style="padding: 15px 20px; margin-top: 10px; background-color: white; width: 870px">
+                <h2 style="border-bottom: 1px solid #F0F0F0">Recommended dishes</h2>
+                <ul style="margin-top: 10px">
+                    <% taste.dishes.forEach((dish) => { %>
+                        <li>
+                            <div class= "thumbnail item" style="width: 100px">
+                                <img class="img-responsive" src= "<%=dish.image%>">
+                                <h4 style="color: #666; font-size: 14px; text-overflow: ellipsis; overflow: hidden;"><%=dish.name%></h4>
+                            </div>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,28 @@
+<%- include ("../partials/header") -%>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/
+bootstrap/3.3.5/css/bootstrap.min.css">
+     <header class="jumbotron">
+         <div class="container">
+             <h1><span class="glyphicon glyphicon-tent"></span> Welcome To YelpCamp!</h1>
+             <p>View our hand-picked tastes from all over the world</p>
+             <p>
+                <a class="btn btn-primary btn-lg" href="/taste/new">Add New Taste</a>
+             </p>
+         </div>
+     </header>
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% tastes.forEach(function(taste){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= taste.image %>">
+                   <div class="caption">
+                       <h4><%= taste.name %></h4>
+                   </div>
+                   <p>
+                       <a href="/taste/<%= taste._id %>" class="btn btn-primary">More Info</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
